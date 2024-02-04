@@ -1,5 +1,6 @@
 package service.impl;
 
+import exception.UserNotFoundException;
 import models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(User user, String userId) {
-
+        logger.info("Update user {} with new user info: {}", userId, user);
+        if (userRepository.findUserById(userId).isEmpty()) {
+            throw new UserNotFoundException("User not found!");
+        }
+        userRepository.save(user);
     }
 
     @Override
