@@ -14,8 +14,7 @@ public class Group {
 
     private String description;
 
-    public Group(Long id, List<User> users, String imageURI, String title, String description) {
-        this.id = id;
+    public Group(List<User> users, String imageURI, String title, String description) {
         this.users = users;
         this.imageURI = imageURI;
         this.title = title;
