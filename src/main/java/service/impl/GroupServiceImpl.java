@@ -9,6 +9,7 @@ import repository.GroupRepository;
 import service.GroupService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class GroupServiceImpl implements GroupService {
@@ -53,8 +54,12 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void fetchGroup(String groupId) {
-
+    public Group fetchGroup(String groupId) {
+        Optional<Group> group = groupRepository.findById(groupId);
+        if (group.isEmpty()) {
+            throw new GroupNotFoundException("Group not found!");
+        }
+        return group.get();
     }
 
     @Override
