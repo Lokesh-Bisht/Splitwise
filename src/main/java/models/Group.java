@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Group {
 
-    private Long id;
+    private final String id;
 
     private List<User> users;
 
@@ -14,19 +14,16 @@ public class Group {
 
     private String description;
 
-    public Group(List<User> users, String imageURI, String title, String description) {
+    public Group(String id, List<User> users, String imageURI, String title, String description) {
+        this.id = id;
         this.users = users;
         this.imageURI = imageURI;
         this.title = title;
         this.description = description;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public List<User> getUsers() {
