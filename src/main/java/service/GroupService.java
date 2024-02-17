@@ -1,11 +1,13 @@
 package service;
 
-import models.Group;
+import models.User;
+
+import java.util.List;
 
 public interface GroupService {
 
-    void createGroup(Group group);
-    void updateGroup(Long groupId);
+    void createGroup(List<User> users, String imageUri, String title, String description);
+    void updateGroupInfo(Long groupId);
     void fetchGroup(Long groupId);
     void deleteGroup(Long groupId);
 }
