@@ -29,4 +29,8 @@ public class GroupRepository {
     public Optional<Group> findById(String groupId) {
         return Optional.ofNullable(groupHashMap.get(groupId));
     }
+
+    public void delete(Group group) {
+        groupHashMap.remove(group.getId());
+    }
 }

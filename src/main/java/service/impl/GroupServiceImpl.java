@@ -64,6 +64,11 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public void deleteGroup(String groupId) {
-
+        Optional<Group> group = groupRepository.findById(groupId);
+        if (group.isEmpty()) {
+            logger.error("An error occurred while deleting the group {}", groupId);
+            throw new GroupNotFoundException("Group not found!");
+        }
+        groupRepository.delete(group.get());
     }
 }
