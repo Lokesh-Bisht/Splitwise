@@ -3,6 +3,7 @@ package repository;
 import models.Group;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 public class GroupRepository {
 
@@ -25,4 +26,7 @@ public class GroupRepository {
         groupHashMap.put(group.getId(), group);
     }
 
+    public Optional<Group> findById(String groupId) {
+        return Optional.ofNullable(groupHashMap.get(groupId));
+    }
 }
