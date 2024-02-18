@@ -71,4 +71,16 @@ public class GroupServiceImpl implements GroupService {
         }
         groupRepository.delete(group.get());
     }
+
+    @Override
+    public Group addOrRemoveUsers(List<User> users, String groupId) {
+        Optional<Group> group = groupRepository.findById(groupId);
+        if (group.isEmpty()) {
+            logger.error("An error occurred while adding and removing users from group {}", groupId);
+            throw new GroupNotFoundException("Group not found!");
+        }
+        group.get().setUsers(users);
+        groupRepository.save(group.get());
+        return group.get();
+    }
 }

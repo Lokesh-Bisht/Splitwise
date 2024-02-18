@@ -11,4 +11,5 @@ public interface GroupService {
     void updateGroupInfo(String groupId, String imageUri, String title, String description);
     Group fetchGroup(String groupId);
     void deleteGroup(String groupId);
+    Group addOrRemoveUsers(List<User> users, String groupId);
 }
